@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+</head>
+<body>
+
+
+    <div data-role="page" id="home">
+        <header data-role="header">
+             <h1>Register</h1>
+        </header>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <label for="sel"  class="ui-hidden-accessible " >
+                    Country:
+                </label>
+                <select name="Services" id="sel" data-native-menu="false" data-mini="true" multiple="multiple" size="4">
+                    <option>Aliments</option>
+                    <!-- <option value="hotel">Hotel</option>
+                    <option value="transport">Transport</option>
+                    <option value="others">Others</option> -->
+                </select>
+            </div>
+         </div>
+    <div id="message">
+    </div>
+
+     </div>
+
+
+     <script>
+        // $(document).on("pageinit",function(){
+        
+// $( "form" ).change(function( event ) {
+    $(document).on('change','#sel',function(){ 
+event.preventDefault();
+arr=[]
+$('#sel option:selected').each(function() {
+  //console.log({"id": $(this).text(),"name":$(this).val()})
+  arr.push({"id": $(this).text(),"name":$(this).val()});
+});
+console.log(arr)
+  if (arr.length > 4){
+  $("#message").html('<p style="#f00">please reduce the number of selected items ('+arr.length+'>4)</p>')
+  }else {
+  
+  $("#message").html("")
+  }
+
+})
+        
+            var data = [
+                {
+                "id": "1",
+                "name": "salade"},
+            {
+                "id": "2",
+                "name": "tomate"},
+            {
+                "id": "3",
+                "name": "oignon"},
+            {
+                "id": "4",
+                "name": "pain"},
+            {
+                "id": "5",
+                "name": "choux"},
+            {
+                "id": "6",
+                "name": "olives"}
+            ];
+            $.each(data, function(i, option) {
+                $('#sel').append($('<option/>').attr("value", option.id).text(option.name));
+            });
+        
+        
+        // }); 
+        </script>
+        
+
+</body>
+</html>
